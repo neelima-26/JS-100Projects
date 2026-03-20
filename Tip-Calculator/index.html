@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tip-Cqlculator</title>
+    <title>Tip-Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <div class="container">
+        <h1 class="h1">Tip-Calculator</h1>
+        <h3 class="h3"><b>Enter the bill amount and tip percentage to calculate the total</b></h3>
+        <p class="p"><b>Bill Amount :</b></p>
+        <input class="price" type="number" id="price" placeholder="">
+        <p class="p"> <b>Tip Percentage :</b></p>
+        <input class="price" type="number" id="tip" placeholder="">
+        <br>
+        <br>
+        <button class="btn" onclick="calculate()">Calculate</button> 
+      <p class="p"><b>Total: <span id="result"></span></b></p>
+    </div>
+    <script src="script.js">
+    </script>
 </body>
 </html>
