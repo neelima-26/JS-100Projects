@@ -1,20 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testimonial Slider</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonial Slider</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="slider">
-        <div class="slide">
-            <img src="boyimg.jpg">
-            <p class="p">“I had a very relaxing experience here.
-The staff was friendly and professional.
-I felt completely refreshed after the session.”</p>
-                <h4>Sirish</h4>
-        </div>
-    </div>
+
+<div class="slider">
+  <div class="testimonial">
+    <img class="img" src="boyimg.jpg">
+    <p class="p"></p>
+    <h4 class="username"></h4> 
+  </div>
+</div>
+
+<script>
+const testimonial = [
+  {
+    img: "boyimg.jpg",
+    text: "I had a very relaxing experience here. The staff was friendly and professional.",
+    name: "Neelima"
+  },
+  {
+    img: "boyimg.jpg",
+    text: "Excellent service! I felt refreshed.",
+    name: "Rajesh"
+  },
+  {
+    img: "boyimg.jpg",
+    text: "Very peaceful environment!",
+    name: "Moksha Sri"
+  }
+];
+
+const image = document.querySelector(".img");
+const paragraph = document.querySelector(".p");
+const username = document.querySelector(".username");
+
+let index = 0;
+
+function changeTestimonial() {
+  const current = testimonial[index];
+
+  image.src = current.img;
+  paragraph.innerText = current.text;
+  username.innerText = current.name;
+
+  index++;
+
+  if (index >= testimonial.length) {
+    index = 0;
+  }
+}
+
+// first load
+changeTestimonial();
+
+// auto change
+setInterval(changeTestimonial, 3000);
+</script>
+
 </body>
 </html>
