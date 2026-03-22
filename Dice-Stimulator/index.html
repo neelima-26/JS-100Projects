@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice-Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dice Roll Simulator</h1>
+         <div class="dice" id="dice">&#9860;</div>
+         <button class="btn" id="rollBtn">Roll Dice</button>
+         <p id="resilt"></p>
+    </div>
+    <script>
+   const dice = document.getElementById("dice");
+const btn = document.getElementById("rollBtn");
+
+btn.addEventListener("click", () => {
+    let count = 0;
+
+    const interval = setInterval(() => {
+        const random = Math.floor(Math.random() * 6) + 1;
+        dice.innerHTML = "&#" + (9855 + random) + ";";
+        count++;
+
+        // 10 times fast change (rolling effect)
+        if (count > 10) {
+            clearInterval(interval);
+
+            // Final result
+            const final = Math.floor(Math.random() * 6) + 1;
+            dice.innerHTML = "&#" + (9855 + final) + ";";
+        }
+        document.getElementById("result").innerText ="Roll :"+final;
+    }, 100); // speed (100ms)
+});
+</script>
+</body>
+</html>
