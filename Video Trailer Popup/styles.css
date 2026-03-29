@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Trailer Popup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="main-container">
+    <img src="https://images.pexels.com/photos/3062545/pexels-photo-3062545.jpeg" alt="movie-image">
+    <h1>Movie Title</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+    <button class="btn">Watch now</button>
+  </div>
+
+  <!-- Popup -->
+  <div class="trailer-container active">
+    <span class="close">❌</span>
+
+    <iframe 
+      id="video"
+      src=""
+      frameborder="0"
+      allow="autoplay"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <script>
+  const btnEl = document.querySelector(".btn");
+const trailerContainerEl = document.querySelector(".trailer-container");
+const closeEl = document.querySelector(".close");
+const videoEl = document.getElementById("video");
+
+// YouTube embed link
+const link = "https://www.youtube.com/embed/Xa39srijnX8?autoplay=1";
+
+// Open popup
+btnEl.addEventListener("click", () => {
+  trailerContainerEl.classList.remove("active");
+  videoEl.src = link;
+});
+
+// Close popup
+closeEl.addEventListener("click", () => {
+  trailerContainerEl.classList.add("active");
+  videoEl.src = ""; // reset video
+});
+  </script>
+
+</body>
+</html>

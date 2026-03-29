@@ -15,9 +15,14 @@
         <p class="error" id="error"></p>
     </div>
     <script>
-        let kg = 5;
-let weight = kg *2.204;
-document.getElementById("result").innertext = 
+       
+    document.getElementById("input").addEventListener("input", function() {
+        let pounds = Number(this.value);
+        let kg = pounds * 0.453592;
+
+        document.getElementById("result").innerText = kg;
+    });
+
     </script>
 </body>
 </html>
