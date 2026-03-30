@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+  <img src="testMovieTrailer.jpg">
+  <h1>TEST Movie</h1>
+  <button class="btn">Watch Now</button>
+</div>
+
+<div class="trailer-container active">
+  <span class="close">❌</span>
+  <iframe id="video" allow="autoplay"></iframe>
+</div>
+<script>
+const btnEl = document.querySelector(".btn");
+const trailerContainerEl = document.querySelector(".trailer-container");
+const closeEl = document.querySelector(".close");
+const videoEl = document.getElementById("video");
+
+// YouTube embed link
+let link = "https://www.youtube.com/embed/Xa39srijnX8?autoplay=1";
+
+// Open popup
+btnEl.addEventListener("click", () => {
+  trailerContainerEl.classList.remove("active");
+  videoEl.src = link;
+});
+
+// Close popup
+closeEl.addEventListener("click", () => {
+  trailerContainerEl.classList.add("active");
+  videoEl.src = ""; // reset video
+});
+</script>
+</body>
+</html>

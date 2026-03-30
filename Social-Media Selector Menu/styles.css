@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2d3436;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 250px;
+}
+
+/* Selector */
+.selector {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Arrow rotation */
+.arrow {
+  transition: 0.3s;
+}
+
+.arrow.rotate {
+  transform: rotate(180deg);
+}
+
+/* Options */
+.options {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  display: none;
+}
+
+/* Show menu */
+.options.show {
+  display: block;
+}
+
+/* Items */
+.options li {
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Hover effect */
+.options li:hover {
+  background: #dfe6e9;
+}
