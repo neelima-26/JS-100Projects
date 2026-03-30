@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+
+  <h1>Rock Paper Scissors 🎮</h1>
+  <button onclick="play('rock')">
+    <img src="rock-emoji.png">
+  </button>
+  <button onclick="play('paper')">
+    <img src="paper-emoji.png">
+  </button>
+  <button onclick="play('scissors')">
+    <img src="scissors-emoji.png">
+  </button>
+  <h2 id="result">Result here...</h2>
+  <p>Player: <span id="player">0</span></p>
+  <p>Computer: <span id="computer">0</span></p>
+
+  <script>
+    let playerScore = 0;
+    let computerScore = 0;
+
+    function play(userChoice) {
+      let choices = ['rock', 'paper', 'scissors'];
+      let randomIndex = Math.floor(Math.random() * 3);
+      let computerChoice = choices[randomIndex];
+
+      let result = "";
+
+      if (userChoice === computerChoice) {
+        result = "Draw!";
+      } 
+      else if (
+        (userChoice === 'rock' && computerChoice === 'scissors') ||
+        (userChoice === 'paper' && computerChoice === 'rock') ||
+        (userChoice === 'scissors' && computerChoice === 'paper')
+      ) {
+        result = "You Win!";
+        playerScore++;
+      } 
+      else {
+        result = "You Lose!";
+        computerScore++;
+      }
+
+      document.getElementById("result").innerText =
+        "You: " + userChoice + " | Computer: " + computerChoice + " → " + result;
+
+      document.getElementById("player").innerText = playerScore;
+      document.getElementById("computer").innerText = computerScore;
+    }
+  </script>
+
+</body>
+</html>
