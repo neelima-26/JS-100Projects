@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    .container {
+      display: flex;
+      gap: 10px;
+    }
+
+    .card {
+      flex: 1;
+      padding: 15px;
+      border: 1px solid black;
+      text-align: center;
+      background: lightblue;
+    }
+
+    /* ✅ Overlay (dark background) */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    /* ✅ Popup box */
+    .popup {
+      background: white;
+      width: 300px;
+      padding: 20px;
+      margin: 100px auto;
+      text-align: center;
+      border-radius: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<h1>Dashboard</h1>
+
+<!-- ✅ Top Cards -->
+<div class="container">
+  <p class="card">Employee: <span id="empCount">0</span></p>
+  <p class="card">Total Salary: ₹<span id="totalSalary">0</span></p>
+  <p class="card">Company List:<br><span id="companyList">3</span></p>
+  <p class="card">Profit: ₹<span id="profit">0</span></p>
+</div>
+
+<h2>Employee List</h2>
+<ul id="list"></ul>
+
+<!-- ✅ Button -->
+<button onclick="openForm()">+ New Form</button>
+
+<!-- ✅ Popup -->
+<div id="overlay">
+  <div class="popup">
+
+    <h3>Add Employee</h3>
+
+    <input type="text" id="Name" placeholder="Name"><br><br>
+    <input type="text" id="Company" placeholder="Company"><br><br>
+    <input type="number" id="Salary" placeholder="Salary"><br><br>
+
+    <button onclick="submitData()">Submit</button>
+    <button onclick="closeForm()">Close</button>
+
+  </div>
+</div>
+
+<script>
+
+let count = 0;
+let totalSalary = 0;
+let profit = 0;
+let companies = 3; // ✅ object for company-wise count
+
+// ✅ Open popup
+function openForm(){
+  document.getElementById("overlay").style.display = "block";
+}
+
+// ✅ Close popup
+function closeForm(){
+  document.getElementById("overlay").style.display = "none";
+}
+
+// ✅ Submit
+function submitData(){
+
+  let name = document.getElementById("Name").value;
+  let company = document.getElementById("Company").value;
+  let salary = document.getElementById("Salary").value;
+
+  if(name==="" || company==="" || salary===""){
+    alert("Please fill all fields");
+    return;
+  }
+
+  // ✅ Employee count
+  count++;
+  document.getElementById("empCount").innerText = count;
+
+  // ✅ Total salary
+  totalSalary += Number(salary);
+  document.getElementById("totalSalary").innerText = totalSalary;
+
+  // ✅ Profit (20%)
+  profit += Number(salary) * 0.2;
+  document.getElementById("profit").innerText = profit;
+
+  // ✅ Company-wise employee count
+  if(companies[company]){
+    companies[company]++;
+  } else {
+    companies[company] = 1;
+  }
+
+  // ✅ Display companies
+  let result = "";
+  for(let key in companies){
+    result += key + " (" + companies[key] + ")<br>";
+  }
+  document.getElementById("companyList").innerHTML = result;
+
+  // ✅ Add to list
+  let li = document.createElement("li");
+  li.innerText = name + " | " + company + " | ₹" + salary;
+  document.getElementById("list").appendChild(li);
+
+  // ✅ Close popup
+  closeForm();
+
+  // ✅ Clear inputs
+  document.getElementById("Name").value = "";
+  document.getElementById("Company").value = "";
+  document.getElementById("Salary").value = "";
+}
+
+</script>
+
+</body>
+</html>
