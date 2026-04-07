@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quotetions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Random Quote</h1>
+
+    <p id="quote">Click Button To Get New Quote</p>
+    <button onclick="getQuote()">New Quote</button>
+    <script>
+       function getQuote(){
+        let output="";
+        for(let i = 0; i < 5; i++){
+        fetch("https://api.api-ninjas.com/v2/quotes",{
+            headers: {
+             "x-API-KEY":"culk8WSfIwqSs7UB0XOYpMMw49HzEA6JfBDvyn9x"
+            }
+        })
+        .then(res => res.json())
+        .then(data =>{
+             output += "<p>" + data[0].quote + " - " + data[0].author + "</p>";
+            document.getElementById("quote").innerText = data[0].quote + " - " + data[0].author;
+        })
+        .catch(error =>{
+            document.getElementById("quote").innerText = "error Loading Quote😥";
+        })
+       }
+    }
+            
+    </script>
+    
+</body>
+</html>
