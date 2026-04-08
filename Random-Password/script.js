@@ -10,6 +10,7 @@
                 let randomNumber = Math.floor(Math.random()*character.length);
                 password += character[randomNumber];
  }
+ //pr kosam change
                 input.value = password;
  })
                 copied.addEventListener("click",function(){
