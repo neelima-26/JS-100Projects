@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random-Password</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="box">
+    <h1>Random-Password Generator</h1>
+    <div class="container">
+        <input type="text" id="input" class="input" placeholder="Create Password"readonly>
+        <i class="fa-regular fa-copy"></i>
+        <br>
+        </div>
+        <button class="btn">Generate</button>
+    
+    </div>
+    <script>
+     const  input = document.getElementById("input");
+     const btn = document.querySelector(".btn");
+     const copied = document.querySelector("i");
+     const character = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+     
+        btn.addEventListener("click",function(){
+            let password = "";
+
+            for(let i=0; i<8; i++){
+                let randomNumber = Math.floor(Math.random()*character.length);
+                password += character[randomNumber];
+ }
+                input.value = password;
+ })
+                copied.addEventListener("click",function(){
+                    navigator.clipboard.writeText(input.value);
+                    alert(input.value)
+               
+           
+        })
+    </script>
+
+</body>
+</html>
