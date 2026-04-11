@@ -12,34 +12,15 @@
     <h1>Random-Password Generator</h1>
     <div class="container">
         <input type="text" id="input" class="input" placeholder="Create Password"readonly>
-        <i class="fa-regular fa-copy"></i>
+        <span class="fa-regular fa-copy"></span>
+       
         <br>
         </div>
+        <br>
         <button class="btn">Generate</button>
     
     </div>
-    <script>
-     const  input = document.getElementById("input");
-     const btn = document.querySelector(".btn");
-     const copied = document.querySelector("i");
-     const character = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
-     
-        btn.addEventListener("click",function(){
-            let password = "";
-
-            for(let i=0; i<8; i++){
-                let randomNumber = Math.floor(Math.random()*character.length);
-                password += character[randomNumber];
- }
-                input.value = password;
- })
-                copied.addEventListener("click",function(){
-                    navigator.clipboard.writeText(input.value);
-                    alert(input.value)
-               
-           
-        })
-    </script>
-
+    <script src="script.js">
+        </script>
 </body>
 </html>
